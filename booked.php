@@ -1,7 +1,6 @@
 <?php
 session_start();
-$connect = mysqli_connect('localhost', 'root');
-mysqli_select_db($connect, 'bytdb');
+include('config.php');
 
 $name = $_POST['passenger'];
 $age = $_POST['age'];
@@ -9,7 +8,10 @@ $gender = $_POST['gender'];
 
 $email = $_POST['email'];
 
-$query = "insert into bookings (date, name, age, gender, email) values (now(), '$name', $age, '$gender', '$email')";
+$origin = $_POST['origin'];
+$destination = $_POST['destination'];
+
+$query = "insert into bookings (date, name, age, gender, email, origin, destination) values (now(), '$name', $age, '$gender', '$email', '$origin', '$destination')";
 
 $return = mysqli_query($connect, $query);
 
@@ -37,15 +39,14 @@ $query1 = "select bookings.* from bookings where bookings.email = '$email'";
             <td> Name </td>
             <td> Age </td>
             <td> Gender </td>
+            <td> Origin </td>
+            <td> Destination </td>
         </tr>
     <?php
      for ($i = 1; $i <= $num; $i++){
          $row = mysqli_fetch_assoc($result);
-         echo "<tr><td> ".$row['date']." </td> <td> ".$row['name']." </td> <td> ".$row['age']." </td> <td> ".$row['gender']. " </td></tr>";
-         
-         
+         echo "<tr><td> ".$row['date']." </td> <td> ".$row['name']." </td> <td> ".$row['age']." </td> <td> ".$row['gender']. " </td><td> ".$row['origin']. " </td><td> ".$row['destination']. " </td></tr>";
      }
-   
     ?>
 
     </table>

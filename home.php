@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-$connect = mysqli_connect('localhost', 'root');
-mysqli_select_db($connect, 'bytdb');
+include('config.php');
 
 $user = $_POST['user'];
 $email = $_POST['email'];
@@ -25,7 +24,6 @@ $return = mysqli_query($connect, $query);
         <?php } else {
             echo "Connection Failed! Please re-register with us before booking your ticket!"; session_destroy();} ?>
         <h2>Safe and Secure Ticket Booking Service</h2> <br>
-        <div id=passenger>
         <form action="booked.php" method="post">
         <table>
             Passenger Details: <br>
@@ -46,11 +44,42 @@ $return = mysqli_query($connect, $query);
                 <td ><input type="text" name="email" value="<?php echo $email ?>" readonly></td>
             </tr>
             <tr>
+                <td>Origin</td>
+                <td>
+                    <select name="origin">
+                        <option>Delhi</option>
+                        <option>Manali</option>
+                        <option>Coorg</option>
+                        <option>Goa</option>
+                        <option>Puri</option>
+                        <option>Amritsar</option>
+                        <option>Chennai</option>
+                        <option>Mumbai</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Destination</td>
+                <td>
+                    <select name="destination">
+                        <option>Delhi</option>
+                        <option>Manali</option>
+                        <option>Coorg</option>
+                        <option>Goa</option>
+                        <option>Puri</option>
+                        <option>Amritsar</option>
+                        <option>Chennai</option>
+                        <option>Mumbai</option>
+                    </select>
+                </td>
+            </tr>
+
+
+            <tr>
                 <td><input type="submit" value="Book Seat"/></td>
             </tr>
         </table>
         </form>
-        </div>
     </body>
 </html>
 
