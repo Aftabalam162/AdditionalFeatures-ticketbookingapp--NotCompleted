@@ -1,6 +1,6 @@
 <?php
 
-    $connect = mysqli_connect('localhost', 'root', '', '_testingdb');
+    $connect = mysqli_connect('localhost', 'root', '', 'bytdb');
 
     if ($_SERVER["REQUEST_METHOD"] == 'POST'){
         
@@ -18,7 +18,7 @@
                     $_SESSION['loggedin'] = true;
 
 
-                    $_SESSION['username'] = $username; // this feature is still need to be updated
+                    $_SESSION['username'] = $username; 
                     header("location: welcome.php");
                 } else {
                     echo 'Invalid Credentials! Sign up with our site to book your ticket';

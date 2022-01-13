@@ -1,6 +1,6 @@
 <?php
 
-    $connect = mysqli_connect('localhost', 'root', '', '_testingdb');
+    $connect = mysqli_connect('localhost', 'root', '', 'bytdb');
 
     if ($_SERVER["REQUEST_METHOD"] == 'POST'){
 
